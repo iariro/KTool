@@ -1,0 +1,88 @@
+<project default="deploy">
+
+	<!-- KTool build.xml -->
+
+	<property environment="env" />
+
+	<property file="../../../build.properties" />
+
+	<condition property="have.tomcat">
+		<available file="${TOMCAT_SITE_HOME}" />
+	</condition>
+
+	<target name="deploy" depends="deployLocal, deployTomcat" />
+
+	<target name="deployLocal">
+		<jar
+			destfile="../../KTool.jar"
+			basedir="bin"
+			includes="**/*.class">
+		</jar>
+	</target>
+
+	<target name="deployFileServer" description="提出物管理サーバ用">
+		<jar
+			destfile="${FILESERVER_PATH}/Win支援全般/TopsLocal/Java/KTool.jar"
+			basedir="bin"
+			includes="**/*.class">
+		</jar>
+	</target>
+
+	<target name="deployTomcat" description="TOMCAT用" if="have.tomcat">
+		<jar
+			destfile="${TOMCAT_SITE_HOME}/WEB-INF/lib/KTool.jar"
+			basedir="bin"
+			includes="**/*.class">
+		</jar>
+		<jar
+			destfile="${TOMCAT_SITE_HOME2}/WEB-INF/lib/KTool.jar"
+			basedir="bin"
+			includes="**/*.class">
+		</jar>
+	</target>
+
+	<target name="zip">
+		<zip
+			destfile="${PDA_HOME}/Temp/KTool.zip"
+			basedir=".."
+			includes="project/**"
+			excludes="project/bin/**" />
+	</target>
+
+	<target name="doxygen">
+		<exec executable="${DOXYGEN_BIN}" />
+	</target>
+
+	<target name="codeguess">
+		<taskdef name="codeguess" classname="kumagai.codeguess.CodeGuessTask" classpath="${JAVAPROJECTCHECKER_LIB}" />
+		<codeguess targetfilepath="src/">
+			<exclude extension="java" code="UTF-8" />
+			<exclude extension="svn-base" />
+		</codeguess>
+	</target>
+
+	<target name="javadoc">
+		<javadoc
+			destdir="../javadoc"
+			sourcepath="src"
+			encoding="utf-8"
+			classpath="${POSTGRE_LIB};${SERVLET_LIB};${ANT_LIB};${JUNIT_LIB}">
+			<tag name="brief" enabled="false" />
+			<tag name="par" enabled="false" />
+			<tag name="code" enabled="false" />
+			<tag name="endcode" enabled="false" />
+			<tag name="date" enabled="false" />
+		</javadoc>
+	</target>
+
+	<target name="test">
+		<junit printsummary="yes">
+			<classpath path="${JUNIT_LIB}:bin" />
+			<formatter type="plain" usefile="no" />
+			<batchtest todir=".">
+				<fileset dir="bin" includes="ktool/type/test/*.class" />
+			</batchtest>
+		</junit>
+	</target>
+
+</project>
