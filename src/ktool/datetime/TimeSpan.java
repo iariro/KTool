@@ -1,7 +1,9 @@
 package ktool.datetime;
 
-import java.text.*;
-import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * 時間間隔情報。
@@ -183,11 +185,27 @@ public class TimeSpan
 	 */
 	public String toString()
 	{
-		return
-			String.format(
-				"%02d:%02d:%02d",
-				getHour(),
-				getMinute(),
-				getSecond());
+		if (millisecond >= 0)
+		{
+			// 正数
+
+			return
+				String.format(
+					"%02d:%02d:%02d",
+					getHour(),
+					getMinute(),
+					getSecond());
+		}
+		else
+		{
+			// 負数
+
+			return
+				String.format(
+					"-%02d:%02d:%02d",
+					- getHour(),
+					- getMinute(),
+					- getSecond());
+		}
 	}
 }

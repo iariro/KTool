@@ -1,8 +1,10 @@
 package ktool.datetime.test;
 
-import java.text.*;
-import junit.framework.*;
-import ktool.datetime.*;
+import java.text.ParseException;
+
+import junit.framework.TestCase;
+import ktool.datetime.DateTime;
+import ktool.datetime.TimeSpan;
 
 public class TimeSpanTest
 	extends TestCase
@@ -91,5 +93,14 @@ public class TimeSpanTest
 		TimeSpan timespan2 = new TimeSpan(12, 35, 56);
 
 		assertEquals(-60, timespan1.diff(timespan2).getTotalSecond());
+	}
+
+	public void testDiff3() throws ParseException
+	{
+		DateTime datetime1 = DateTime.parseDateTimeString("2017/10/05 11:22:33");
+		DateTime datetime2 = DateTime.parseDateTimeString("2017/10/05 22:33:44");
+		TimeSpan timespan = datetime1.diff(datetime2);
+		assertEquals(-(3600 * 11 + 60 * 11 + 11), timespan.getTotalSecond());
+		assertEquals("-11:11:11", timespan.toString());
 	}
 }
