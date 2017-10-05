@@ -1,8 +1,11 @@
 package ktool.net;
 
-import java.io.*;
-import java.net.*;
-import org.apache.tools.ant.*;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.Task;
 
 /**
  * Ant用HTTPダウンロードタスク。
@@ -10,13 +13,11 @@ import org.apache.tools.ant.*;
  *
  * <br>
  * 使用例：
- * <p><blockquote><pre>
  * &lt;taskdef name="httpdownload" classname="ktool.net.HttpDownloadTask" classpath="KTool.jar" /&gt;
  *
  * &lt;target name="download"&gt;
  * 	&lt;httpdownload url="http://hostname/index.html" filepath="index.html" /&gt;
  * &lt;/target&gt;
- * </pre></blockquote>
  */
 public class HttpDownloadTask
 	extends Task

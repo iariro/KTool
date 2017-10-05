@@ -1,6 +1,6 @@
 package ktool.io;
 
-import java.io.*;
+import java.io.File;
 
 /**
  * ディレクトリ取得関数を提供するクラス。
@@ -15,7 +15,7 @@ public class Directory
 	 * @return ファイルリスト
 	 * <pre>
 	 * 履歴
-	 * <li>2004.11.16 Kumagai
+	 * 2004.11.16 Kumagai
 	 * listFiles()失敗時にnullを返却するよう修正
 	 * </pre>
 	 */

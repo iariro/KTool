@@ -24,7 +24,7 @@ public class Month
 
 	/**
 	  * 月の名前を数値で取得する
-	  * @param month
+	  * @param month 英語３文字形式の月文字列
 	  * @return 1-12 までの数値で返却する
 	  */
 	public static int monthToInt(String month)
