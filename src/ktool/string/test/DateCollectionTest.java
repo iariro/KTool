@@ -1,8 +1,9 @@
 package ktool.string.test;
 
-import java.text.*;
-import junit.framework.*;
-import ktool.string.*;
+import java.text.ParseException;
+
+import junit.framework.TestCase;
+import ktool.string.DateCollection;
 
 public class DateCollectionTest
 	extends TestCase
@@ -10,7 +11,7 @@ public class DateCollectionTest
 	public void testFromCsv1()
 		throws ParseException
 	{
-		Assert.assertEquals(
+		assertEquals(
 			"2014/01/01",
 			DateCollection.fromCsv("2014/01/01").toShortString());
 	}
@@ -18,7 +19,7 @@ public class DateCollectionTest
 	public void testFromCsv2()
 		throws ParseException
 	{
-		Assert.assertEquals(
+		assertEquals(
 			"2014/01/01-2014/01/02",
 			DateCollection.fromCsv("2014/01/01,2014/01/02").toShortString());
 	}
@@ -26,7 +27,7 @@ public class DateCollectionTest
 	public void testFromCsv3()
 		throws ParseException
 	{
-		Assert.assertEquals(
+		assertEquals(
 			"2014/01/01-2014/01/03",
 			DateCollection.fromCsv("2014/01/01,2014/01/02,2014/01/03").toShortString());
 	}
@@ -34,7 +35,7 @@ public class DateCollectionTest
 	public void testFromCsv4()
 		throws ParseException
 	{
-		Assert.assertEquals(
+		assertEquals(
 			"2014/01/01,2014/01/03",
 			DateCollection.fromCsv("2014/01/01,2014/01/03").toShortString());
 	}
@@ -42,7 +43,7 @@ public class DateCollectionTest
 	public void testFromCsv5()
 		throws ParseException
 	{
-		Assert.assertEquals(
+		assertEquals(
 			"2014/01/01-2014/01/02,2014/01/04",
 			DateCollection.fromCsv("2014/01/01,2014/01/02,2014/01/04").toShortString());
 	}
@@ -50,7 +51,7 @@ public class DateCollectionTest
 	public void testFromCsv6()
 		throws ParseException
 	{
-		Assert.assertEquals(
+		assertEquals(
 			"2014/01/01-2014/01/03,2014/01/05",
 			DateCollection.fromCsv("2014/01/01,2014/01/02,2014/01/03,2014/01/05").toShortString());
 	}
@@ -58,7 +59,7 @@ public class DateCollectionTest
 	public void testFromCsv7()
 		throws ParseException
 	{
-		Assert.assertEquals(
+		assertEquals(
 			"2014/01/01-2014/01/03,2014/01/05-2014/01/07",
 			DateCollection.fromCsv("2014/01/01,2014/01/02,2014/01/03,2014/01/05,2014/01/06,2014/01/07").toShortString());
 	}
@@ -66,7 +67,7 @@ public class DateCollectionTest
 	public void testFromCsv8()
 		throws ParseException
 	{
-		Assert.assertEquals(
+		assertEquals(
 			"2013/12/31-2014/01/01",
 			DateCollection.fromCsv("2013/12/31,2014/01/01").toShortString());
 	}
@@ -75,25 +76,25 @@ public class DateCollectionTest
 		throws ParseException
 	{
 		DateCollection dateCollection = DateCollection.fromHyphenAndComma("2014/04/09");
-		Assert.assertEquals(1, dateCollection.size());
-		Assert.assertEquals("2014/04/09", dateCollection.get(0));
+		assertEquals(1, dateCollection.size());
+		assertEquals("2014/04/09", dateCollection.get(0));
 	}
 
 	public void testFromHyphenAndComma2()
 		throws ParseException
 	{
 		DateCollection dateCollection = DateCollection.fromHyphenAndComma("2014/04/08-2014/04/09");
-		Assert.assertEquals(2, dateCollection.size());
+		assertEquals(2, dateCollection.size());
 	}
 
 	public void testFromHyphenAndComma3()
 		throws ParseException
 	{
 		DateCollection dateCollection = DateCollection.fromHyphenAndComma("2014/04/01-2014/04/03,2014/04/09");
-		Assert.assertEquals(4, dateCollection.size());
-		Assert.assertEquals("2014/04/01", dateCollection.get(0));
-		Assert.assertEquals("2014/04/02", dateCollection.get(1));
-		Assert.assertEquals("2014/04/03", dateCollection.get(2));
-		Assert.assertEquals("2014/04/09", dateCollection.get(3));
+		assertEquals(4, dateCollection.size());
+		assertEquals("2014/04/01", dateCollection.get(0));
+		assertEquals("2014/04/02", dateCollection.get(1));
+		assertEquals("2014/04/03", dateCollection.get(2));
+		assertEquals("2014/04/09", dateCollection.get(3));
 	}
 }
