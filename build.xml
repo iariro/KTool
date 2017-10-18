@@ -34,11 +34,6 @@
 			basedir="bin"
 			includes="**/*.class">
 		</jar>
-		<jar
-			destfile="${TOMCAT_SITE_HOME2}/WEB-INF/lib/KTool.jar"
-			basedir="bin"
-			includes="**/*.class">
-		</jar>
 	</target>
 
 	<target name="zip">
