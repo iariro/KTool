@@ -1,7 +1,11 @@
 package ktool.io;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  * テキストファイルから構築可能な文字列配列。
@@ -19,7 +23,7 @@ public class StringListFromFile
 	public StringListFromFile(String filename)
 		throws FileNotFoundException, IOException
 	{
-		this(filename, "Shift_JIS");
+		this(filename, "utf-8");
 	}
 
 	/**
