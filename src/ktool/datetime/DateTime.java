@@ -1,12 +1,17 @@
 package ktool.datetime;
 
-import java.text.*;
-import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 /**
  * 日付・時刻型。
  */
 public class DateTime
+	implements Comparable<DateTime>
 {
 	static private final SimpleDateFormat formatDate;
 	static private final SimpleDateFormat formatTime;
