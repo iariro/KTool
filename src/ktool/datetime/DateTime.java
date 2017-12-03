@@ -205,7 +205,7 @@ public class DateTime
 
 	/**
 	 * 月を取得。
-	 * @return 年
+	 * @return 月
 	 */
 	public int getMonth()
 	{
@@ -223,11 +223,20 @@ public class DateTime
 
 	/**
 	 * 日を取得。
-	 * @return 年
+	 * @return 日
 	 */
 	public int getDay()
 	{
 		return calendar.get(Calendar.DAY_OF_MONTH);
+	}
+
+	/**
+	 * 曜日を取得。
+	 * @return 曜日
+	 */
+	public int getDayOfWeek()
+	{
+		return calendar.get(Calendar.DAY_OF_WEEK);
 	}
 
 	/**
@@ -241,7 +250,7 @@ public class DateTime
 
 	/**
 	 * 時を取得。
-	 * @return 年
+	 * @return 時
 	 */
 	public int getHour()
 	{
@@ -250,7 +259,7 @@ public class DateTime
 
 	/**
 	 * 分を取得。
-	 * @return 年
+	 * @return 分
 	 */
 	public int getMinute()
 	{
