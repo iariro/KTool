@@ -400,6 +400,18 @@ public class DateTime
 	}
 
 	/**
+	 * 同日であるかを判定する
+	 * @param date 比較する日時
+	 * @return true=同日／false=同日ではない
+	 */
+	public boolean isSameDate(DateTime date)
+	{
+		return getYear() == date.getYear() &&
+			   getMonth() == date.getMonth() &&
+			   getDay() == date.getDay();
+	}
+
+	/**
 	 * 時間文字列を取得する。
 	 * @return 時間文字列
 	 */
